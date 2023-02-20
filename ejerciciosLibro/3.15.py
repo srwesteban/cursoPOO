@@ -9,9 +9,8 @@ while not eof: # mientras eof no sea falso, es decir sea verdadero termina el bu
     citystatezip = phonebook.readline().rstrip()
     homephone = phonebook.readline().rstrip()
     mobilephone = phonebook.readline().rstrip()
-    # if lastName is empty then we didn’t really read a record
     if lastName !="": # si lastname es diferente de un espacio
-        # Process the record by adding to the accumulator
+        #acumulador
         numEntries = numEntries + 1
     else: #eof es verdadero, acaba el ciclo
         eof = True
