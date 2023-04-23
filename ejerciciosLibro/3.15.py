@@ -15,3 +15,4 @@ while not eof: # mientras eof no sea falso, es decir sea verdadero termina el bu
     else: #eof es verdadero, acaba el ciclo
         eof = True
 print("tienes", numEntries ,"entradas en tu libreta de direcciones.")
+

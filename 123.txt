@@ -1,0 +1,2 @@
+Número de cuenta: 123
+Saldo disponible: 800000.0
