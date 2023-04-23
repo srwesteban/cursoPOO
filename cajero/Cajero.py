@@ -1,6 +1,4 @@
 from Divisas import Divisas
-
-
 class Cajero(Divisas):
     __Limite = 2500000  # variable privada
 
@@ -9,7 +7,7 @@ class Cajero(Divisas):
         try:
             with open(archivo, 'r') as saldo:
                 self.saldo = float(saldo.read())
-        except FileNotFoundError: # si no encuentra el archivo lo crea
+        except FileNotFoundError:  # si no encuentra el archivo lo crea
             with open(archivo, 'w') as saldo:
                 saldo.write('0')
             self.saldo = 0
@@ -28,17 +26,17 @@ class Cajero(Divisas):
             self.saldo -= cantidad
             with open(self.archivo, 'w') as f:
                 f.write(str(self.saldo))
+                return 'operacion exitosa'
         elif cantidad > self.__Limite:
             return print("accion denegada la cantidad máxima de retiro es $2,500,000.")
         else:
-            return print("No hay suficiente saldo.")
+            return "No hay suficiente saldo."
 
     # consulta
 
     def consultar(self):
         with open(self.archivo, 'r') as f:
             return float(f.read())
-
 
 def menu():  # menu
     print('1. Consultar saldo')
