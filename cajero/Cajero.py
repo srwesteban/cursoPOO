@@ -1,6 +1,8 @@
-class Cajero:
+from Divisas import Divisas
 
-    __Limite = 2500000 # variable privada
+
+class Cajero(Divisas):
+    __Limite = 2500000  # variable privada
 
     def __init__(self, archivo):
         self.archivo = archivo
@@ -12,13 +14,14 @@ class Cajero:
                 saldo.write('0')
             self.saldo = 0
 
-# consignar
+    # consignar
 
     def consignar(self, cantidad):
         self.saldo += cantidad
         with open(self.archivo, 'w') as f:
-            f.write(str(self.saldo)) # escribe el archivo saldo
-# retirar
+            f.write(str(self.saldo))  # escribe el archivo saldo
+
+    # retirar
 
     def retirar(self, cantidad):
         if self.saldo >= cantidad:
@@ -30,14 +33,18 @@ class Cajero:
         else:
             return print("No hay suficiente saldo.")
 
-# consulta
+    # consulta
 
     def consultar(self):
         with open(self.archivo, 'r') as f:
             return float(f.read())
 
-def menu(): # menu
+
+def menu():  # menu
     print('1. Consultar saldo')
     print('2. Depositar')
     print('3. Retirar')
     print('4. Salir')
+
+
+

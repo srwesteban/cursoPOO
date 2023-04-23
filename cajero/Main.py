@@ -1,17 +1,19 @@
 from Cajero import Cajero, menu
 
-
 if __name__ == '__main__': # la manera de tener una clase main en python donde inicia la ejecucion
     archivo = 'saldo.txt' # el archivo que contiene saldo
     cajero = Cajero(archivo) # creacion del objeto pide un archivo por parametro
 
-    while True: # la manera de acer un Do While en python
+    while True: # la manera de hacer un Do While en python
         menu()
-        opcion = input('Ingrese una opción: ')
+        opcion = abs(int(input('Ingrese una opción: ')))
         if opcion == '1': # consultar
             print(f'Su saldo es: {cajero.consultar()}')
         elif opcion == '2': # consignar
-            cantidad = abs(float(input('Ingrese la cantidad a depositar: ')))
+            cajero.divi() # cajero hereda de divisas
+            tipo = abs(int(input('ingrese el tipo de moneda')))
+            monto = abs(float(input('Ingrese la cantidad a depositar: ')))
+            cantidad = cajero.conversion(tipo,monto) #cajero hereda la funcion conversion y se guarda en una cariable
             cajero.consignar(cantidad)
             print(f'Su nuevo saldo es: {cajero.consultar()}')
             #retirar
