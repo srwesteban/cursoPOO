@@ -1,13 +1,11 @@
-
 from Divisas import Divisas
 
 
 class Cajero(Divisas):
     __Limite = 2500000  # variable privada
-    
-    archivo = 'Bancolombia.txt'
 
     def __init__(self, archivo):
+        self.archivo = archivo
 
         with open(archivo, 'r') as saldo:
             self.saldo = float(saldo.read())

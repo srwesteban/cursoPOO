@@ -4,23 +4,24 @@ from Cajero import Cajero
 if __name__ == '__main__':
 
     banco = Banco()
-    archivo = 'bd/Bancolombia.txt'
-    cajero = Cajero(archivo)
+    archivo = ''
 
     print('seleccione su banco')
     banco.menu()
 
     opcion = abs(int(input('Ingrese una opción: ')))
     if opcion == 1:
-        cajero.archivo = banco.Davivienda
+        archivo = banco.Davivienda
     elif opcion == 2:
-        cajero.archivo = banco.BBVA
+        archivo = banco.BBVA
     elif opcion == 3:
-        cajero.archivo = banco.Colptaria
+        archivo = banco.Colptaria
     elif opcion == 4:
-        cajero.archivo = banco.Citybank
+        archivo = banco.Citybank
     else:
         pass
+
+    cajero = Cajero(archivo)
 
     cajero.limpiarPantalla()
 
@@ -33,7 +34,7 @@ if __name__ == '__main__':
             print(f'Su saldo es: {cajero.consultar()}')
 
         elif opcion == 2:
-            cantidad = abs(int(input('ingrese la cantidad')))
+            cantidad = abs(int(input('ingrese la cantidad: ')))
             cajero.consignar(cantidad)
             print(f'Su nuevo saldo es: {cajero.consultar()}')
 
@@ -53,7 +54,7 @@ if __name__ == '__main__':
         elif opcion == 5:
             cajero.divi()
             tipo = abs(int(input('ingrese el tipo de moneda: ')))
-            monto = abs(float(input('Ingrese la cantidad a depositar: ')))
+            monto = abs(float(input('Ingrese la cantidad a retirar: ')))
             cantidad = cajero.conversion(tipo, monto)
             cajero.retirar(cantidad)
             print(f'Su nuevo saldo es: {cajero.consultar()}')
