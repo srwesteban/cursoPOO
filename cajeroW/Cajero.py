@@ -1,18 +1,19 @@
+
 from Divisas import Divisas
+
+
 class Cajero(Divisas):
     __Limite = 2500000  # variable privada
+    
+    archivo = 'Bancolombia.txt'
 
     def __init__(self, archivo):
-        self.archivo = archivo
-        try:
-            with open(archivo, 'r') as saldo:
-                self.saldo = float(saldo.read())
-        except FileNotFoundError:  # si no encuentra el archivo lo crea
-            with open(archivo, 'w') as saldo:
-                saldo.write('0')
-            self.saldo = 0
 
-    # consignar
+        with open(archivo, 'r') as saldo:
+            self.saldo = float(saldo.read())
+
+    def limpiarPantalla(self):
+        print('\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n')
 
     def consignar(self, cantidad):
         self.saldo += cantidad
@@ -38,11 +39,10 @@ class Cajero(Divisas):
         with open(self.archivo, 'r') as f:
             return float(f.read())
 
-def menu():  # menu
-    print('1. Consultar saldo')
-    print('2. Depositar')
-    print('3. Retirar')
-    print('4. Salir')
-
-
-
+    def menu(self):
+        print('1. Consultar saldo')
+        print('2. Consignacion')
+        print('3. Consignacion en otras divisas')
+        print('4. Retirar')
+        print('5. Retirar con otras divisas')
+        print('6. Salir')
