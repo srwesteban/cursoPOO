@@ -1,13 +1,15 @@
+from Banco import Banco
 from Divisas import Divisas
 
 
 class Cajero(Divisas):
+
     __Limite = 2500000  # variable privada
 
-    def __init__(self, archivo):
-        self.archivo = archivo
+    def __init__(self, user):
+        self.archivo = user
 
-        with open(archivo, 'r') as saldo:
+        with open(self.archivo, 'r') as saldo:
             self.saldo = float(saldo.read())
 
     def limpiarPantalla(self):

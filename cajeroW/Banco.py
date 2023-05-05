@@ -1,7 +1,6 @@
-from Cajero import Cajero
-
 
 class Banco:
+
     Davivienda = "bd/Davivienda.txt"
     Bancolombia = "bd/Bancolombia.txt"
     Citybank = "bd/Citybank.txt"
@@ -12,15 +11,18 @@ class Banco:
         pass
 
 
-
-
-
-    def validar(numero):
-        with open('datos_bancarios.txt', 'r') as archivo:
-            for linea in archivo:
-                if linea.startswith(numero):
-                    return True
-        return False
+    def seleccionarBanco(self):
+        opcion = abs(int(input('Ingrese una opción: ')))
+        if opcion == 1:
+            return self.Davivienda
+        elif opcion == 2:
+             return self.BBVA
+        elif opcion == 3:
+            return self.Colptaria
+        elif opcion == 4:
+            return  self.Citybank
+        else:
+            return self.Bancolombia
 
     def menu(self):
         print('1.Davivienda')

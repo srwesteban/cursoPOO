@@ -1,4 +1,5 @@
 class Divisas:
+
     Dolar = 4650
     Euro = 4980
     Yen = 785

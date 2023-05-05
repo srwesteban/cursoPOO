@@ -1,29 +1,35 @@
+import sys
+
 from Banco import Banco
 from Cajero import Cajero
+from Usuarios import Usuario
 
 if __name__ == '__main__':
 
     banco = Banco()
-    archivo = ''
 
     print('seleccione su banco')
     banco.menu()
 
-    opcion = abs(int(input('Ingrese una opción: ')))
-    if opcion == 1:
-        archivo = banco.Davivienda
-    elif opcion == 2:
-        archivo = banco.BBVA
-    elif opcion == 3:
-        archivo = banco.Colptaria
-    elif opcion == 4:
-        archivo = banco.Citybank
-    else:
-        pass
+    BD = banco.seleccionarBanco()
 
-    cajero = Cajero(archivo)
+    cuenta = input("Ingresa tu nombre de usuario: ")
+    contrasena = input("Ingresa tu contraseña: ")
+
+    usuario = Usuario(cuenta, contrasena)
+    nombre = usuario.validar(BD)
+
+    user = usuario.enviarUsuario(nombre)
+
+    cajero = Cajero(user)
+
+    if nombre is None:
+        sys.exit('Datos incorrectos fin del programa')
+    else: pass
 
     cajero.limpiarPantalla()
+
+    print('Bienvenid@ ' + nombre)
 
     while True:
 
