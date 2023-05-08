@@ -7,6 +7,7 @@ class Cajero(Divisas):
     __Limite = 2500000  # variable privada
 
     def __init__(self, user):
+        super().__init__()
         self.archivo = user
 
         with open(self.archivo, 'r') as saldo:
@@ -32,7 +33,6 @@ class Cajero(Divisas):
             return print("accion denegada la cantidad máxima de retiro es $2,500,000.")
         else:
             return "No hay suficiente saldo."
-
     # consulta
 
     def consultar(self):

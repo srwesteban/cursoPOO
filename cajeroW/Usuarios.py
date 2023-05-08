@@ -1,9 +1,5 @@
 
-
-from Cajero import Cajero
-
-
-class Usuario(Cajero):
+class Usuario():
 
     def __init__(self, cuenta, contrasena):
         self.Cuenta = cuenta

@@ -13,7 +13,7 @@ if __name__ == '__main__':
 
     BD = banco.seleccionarBanco()
 
-    cuenta = input("Ingresa tu nombre de usuario: ")
+    cuenta = input("Ingresa tu numero de cuenta ")
     contrasena = input("Ingresa tu contraseña: ")
 
     usuario = Usuario(cuenta, contrasena)
@@ -25,11 +25,12 @@ if __name__ == '__main__':
 
     if nombre is None:
         sys.exit('Datos incorrectos fin del programa')
-    else: pass
+    else:
+        pass
 
     cajero.limpiarPantalla()
 
-    print('Bienvenid@ ' + nombre)
+    print('Bienvenid@ ' + nombre + '\n')
 
     while True:
 
