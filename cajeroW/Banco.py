@@ -1,6 +1,4 @@
-
 class Banco:
-
     Davivienda = "bd/Davivienda.txt"
     Bancolombia = "bd/Bancolombia.txt"
     Citybank = "bd/Citybank.txt"
@@ -10,17 +8,16 @@ class Banco:
     def __init__(self):
         pass
 
-
     def seleccionarBanco(self):
         opcion = abs(int(input('Ingrese una opción: ')))
         if opcion == 1:
             return self.Davivienda
         elif opcion == 2:
-             return self.BBVA
+            return self.BBVA
         elif opcion == 3:
             return self.Colptaria
         elif opcion == 4:
-            return  self.Citybank
+            return self.Citybank
         else:
             return self.Bancolombia
 
@@ -30,10 +27,3 @@ class Banco:
         print('3.Colpatria')
         print('4.Citybank')
         print('5.Bancolombia')
-
-
-
-
-
-
-
