@@ -24,7 +24,7 @@ class Cajero(Divisas):
     def consultar(self, numero):
         return print(self.numeros[numero])
 
-    def limpiarPantalla(self):
+    def limpiar_pantalla(self):
         print('\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n')
 
     def consignar(self, cantidad, numero):

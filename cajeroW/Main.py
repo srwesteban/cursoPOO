@@ -1,5 +1,3 @@
-import sys
-
 from Banco import Banco
 from Cajero import Cajero
 from Usuarios import Usuario
@@ -7,27 +5,16 @@ from Usuarios import Usuario
 if __name__ == '__main__':
 
     banco = Banco()
-
-    print('seleccione su banco')
     banco.menu()
-
-    BD = banco.seleccionarBanco()
-
+    BD = banco.seleccionar_banco()
     cuenta = input("Ingresa tu numero de cuenta ")
     contrasena = input("Ingresa tu contraseña: ")
-
     usuario = Usuario(cuenta, contrasena)
-    nombre = usuario.validar(BD)
-
-    numero = usuario.enviarUsuario(nombre)
+    nombre = usuario.validar_banco(BD)
+    numero = usuario.enviar_usuario(nombre)
     cajero = Cajero()
-
-    if nombre is None:
-        sys.exit('Datos incorrectos fin del programa')
-    else:
-        pass
-
-    cajero.limpiarPantalla()
+    usuario.validar_usuario(nombre)
+    cajero.limpiar_pantalla()
 
     print('Bienvenid@ ' + nombre + '\n')
 
@@ -35,18 +22,15 @@ if __name__ == '__main__':
 
         cajero.menu()
         opcion = abs(int(input('Ingrese una opción: ')))
-        cajero.limpiarPantalla()
+        cajero.limpiar_pantalla()
         if opcion == 1:
             print('Su saldo es: ')
             cajero.consultar(numero)
-
         elif opcion == 2:
             cantidad = abs(int(input('ingrese la cantidad: ')))
             print('Su nuevo saldo es: ')
             cajero.consignar(cantidad, numero)
             cajero.actualizar()
-
-
         elif opcion == 3:
             cajero.divi()
             tipo = abs(int(input('ingrese el tipo de moneda: ')))
@@ -55,16 +39,12 @@ if __name__ == '__main__':
             print('Su nuevo saldo es: ')
             cajero.consignar(cantidad, numero)
             cajero.actualizar()
-
-
         elif opcion == 4:
             cantidad = abs(float(input('Ingrese la cantidad a retirar: ')))
             print(cajero.retirar(cantidad, numero))
             print(f"Su nuevo saldo es: ")
             cajero.consultar(numero)
             cajero.actualizar()
-
-
         elif opcion == 5:
             cajero.divi()
             tipo = abs(int(input('ingrese el tipo de moneda: ')))
@@ -74,8 +54,6 @@ if __name__ == '__main__':
             print(f'Su nuevo saldo es:')
             cajero.consultar(numero)
             cajero.actualizar()
-
-
         else:
             print("fin del programa")
             cajero.actualizar()

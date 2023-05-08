@@ -1,11 +1,13 @@
+import sys
 
-class Usuario():
+
+class Usuario:
 
     def __init__(self, cuenta, contrasena):
         self.Cuenta = cuenta
         self.Contrasena = contrasena
 
-    def validar(self,bd):
+    def validar_banco(self, bd):
         try:
             with open(bd, 'r') as archivo:
                 for linea in archivo:
@@ -16,7 +18,13 @@ class Usuario():
 
             return None
 
-    def enviarUsuario(self, nombre):
+    def validar_usuario(self, nombre):
+        if nombre is None:
+            sys.exit('Datos incorrectos fin del programa')
+        else:
+            pass
+
+    def enviar_usuario(self, nombre):
         if nombre == 'ana':
             return 0
         elif nombre == 'andrea':
