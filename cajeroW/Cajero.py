@@ -1,47 +1,50 @@
-from Banco import Banco
 from Divisas import Divisas
 
 
 class Cajero(Divisas):
-
     __Limite = 2500000  # variable privada
-    saldo = None
+    numeros = []
 
-    def __init__(self, numero):
+    def __init__(self):
         super().__init__()
-
         self.archivo = 'data_users/usuarios.txt'
-        with open(self.archivo, "r") as archivo:
-            self.contenido = archivo.readlines()
+        with open(self.archivo, "r") as f:
+            self.lineas = f.readlines()
+            for linea in self.lineas:
+                numero = float(linea)
+                self.numeros.append(numero)
+
+    def actualizar(self):
+        with open(self.archivo, "w") as f:
+            # Escribe cada número de la lista en una línea separada
+            for numero in self.numeros:
+                f.write(str(numero) + "\n")
+        f.close()
+
+    def consultar(self, numero):
+        return print(self.numeros[numero])
 
     def limpiarPantalla(self):
         print('\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n')
 
-    def consignar(self, cantidad,numero):
-        self.saldo += cantidad
-        self.contenido[numero] = 'hola'
-        return print(self.contenido[numero])
-
-
+    def consignar(self, cantidad, numero):
+        self.numeros[numero] += cantidad
+        print(self.numeros[numero])
 
     # retirar
-
-    def retirar(self, cantidad,numero):
-        if self.saldo >= cantidad:
-            self.saldo -= cantidad
-            with open(self.archivo[numero], 'w') as f:
-                f.write(str(self.saldo))
-                return 'operacion exitosa'
+    def retirar(self, cantidad, numero):
+        if self.numeros[numero] >= cantidad:
+            self.numeros[numero] -= cantidad
+            return 'operacion exitosa'
         elif cantidad > self.__Limite:
-            return print("accion denegada la cantidad máxima de retiro es $2,500,000.")
+            return print("accion denegada la cantidad máxima de retiro es $2,500,000 COP.")
         else:
-            return "No hay suficiente saldo."
+            return "No hay suficiente saldo, no se completo la operacion."
+
     # consulta
 
-    def consultar(self,numero):
-         return print(self.contenido[numero])
-
     def menu(self):
+        print('')
         print('1. Consultar saldo')
         print('2. Consignacion')
         print('3. Consignacion en otras divisas')

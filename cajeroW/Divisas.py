@@ -30,4 +30,4 @@ class Divisas:
         print('2. Euro')
         print('3. Yen')
         print('4. Libra')
-        print('5. COP')
+        print('5. COP\n')

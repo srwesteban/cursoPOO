@@ -20,8 +20,7 @@ if __name__ == '__main__':
     nombre = usuario.validar(BD)
 
     numero = usuario.enviarUsuario(nombre)
-
-    cajero = Cajero(numero)
+    cajero = Cajero()
 
     if nombre is None:
         sys.exit('Datos incorrectos fin del programa')
@@ -37,35 +36,47 @@ if __name__ == '__main__':
         cajero.menu()
         opcion = abs(int(input('Ingrese una opción: ')))
         cajero.limpiarPantalla()
-        if opcion == 1:  # consultar
-            print(f'Su saldo es: {cajero.consultar(numero)}')
+        if opcion == 1:
+            print('Su saldo es: ')
+            cajero.consultar(numero)
 
         elif opcion == 2:
             cantidad = abs(int(input('ingrese la cantidad: ')))
-            cajero.consignar(cantidad,numero)
-            print(f'Su nuevo saldo es: {cajero.consultar(numero)}')
+            print('Su nuevo saldo es: ')
+            cajero.consignar(cantidad, numero)
+            cajero.actualizar()
+
 
         elif opcion == 3:
             cajero.divi()
             tipo = abs(int(input('ingrese el tipo de moneda: ')))
             monto = abs(float(input('Ingrese la cantidad a depositar: ')))
             cantidad = cajero.conversion(tipo, monto)
-            cajero.consignar(cantidad)
-            print(f'Su nuevo saldo es: {cajero.consultar(numero)}')
+            print('Su nuevo saldo es: ')
+            cajero.consignar(cantidad, numero)
+            cajero.actualizar()
+
 
         elif opcion == 4:
             cantidad = abs(float(input('Ingrese la cantidad a retirar: ')))
-            print(cajero.retirar(cantidad))
-            print(f"Su nuevo saldo es: {cajero.consultar(numero)}")
+            print(cajero.retirar(cantidad, numero))
+            print(f"Su nuevo saldo es: ")
+            cajero.consultar(numero)
+            cajero.actualizar()
+
 
         elif opcion == 5:
             cajero.divi()
             tipo = abs(int(input('ingrese el tipo de moneda: ')))
             monto = abs(float(input('Ingrese la cantidad a retirar: ')))
             cantidad = cajero.conversion(tipo, monto)
-            cajero.retirar(cantidad)
-            print(f'Su nuevo saldo es: {cajero.consultar(numero)}')
+            print(cajero.retirar(cantidad, numero))
+            print(f'Su nuevo saldo es:')
+            cajero.consultar(numero)
+            cajero.actualizar()
+
 
         else:
             print("fin del programa")
+            cajero.actualizar()
             break
