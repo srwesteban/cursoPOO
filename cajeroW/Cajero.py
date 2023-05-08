@@ -5,28 +5,31 @@ from Divisas import Divisas
 class Cajero(Divisas):
 
     __Limite = 2500000  # variable privada
+    saldo = None
 
-    def __init__(self, user):
+    def __init__(self, numero):
         super().__init__()
-        self.archivo = user
 
-        with open(self.archivo, 'r') as saldo:
-            self.saldo = float(saldo.read())
+        self.archivo = 'data_users/usuarios.txt'
+        with open(self.archivo, "r") as archivo:
+            self.contenido = archivo.readlines()
 
     def limpiarPantalla(self):
         print('\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n')
 
-    def consignar(self, cantidad):
+    def consignar(self, cantidad,numero):
         self.saldo += cantidad
-        with open(self.archivo, 'w') as f:
-            f.write(str(self.saldo))  # escribe el archivo saldo
+        self.contenido[numero] = 'hola'
+        return print(self.contenido[numero])
+
+
 
     # retirar
 
-    def retirar(self, cantidad):
+    def retirar(self, cantidad,numero):
         if self.saldo >= cantidad:
             self.saldo -= cantidad
-            with open(self.archivo, 'w') as f:
+            with open(self.archivo[numero], 'w') as f:
                 f.write(str(self.saldo))
                 return 'operacion exitosa'
         elif cantidad > self.__Limite:
@@ -35,9 +38,8 @@ class Cajero(Divisas):
             return "No hay suficiente saldo."
     # consulta
 
-    def consultar(self):
-        with open(self.archivo, 'r') as f:
-            return float(f.read())
+    def consultar(self,numero):
+         return print(self.contenido[numero])
 
     def menu(self):
         print('1. Consultar saldo')

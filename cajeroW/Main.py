@@ -19,9 +19,9 @@ if __name__ == '__main__':
     usuario = Usuario(cuenta, contrasena)
     nombre = usuario.validar(BD)
 
-    user = usuario.enviarUsuario(nombre)
+    numero = usuario.enviarUsuario(nombre)
 
-    cajero = Cajero(user)
+    cajero = Cajero(numero)
 
     if nombre is None:
         sys.exit('Datos incorrectos fin del programa')
@@ -38,12 +38,12 @@ if __name__ == '__main__':
         opcion = abs(int(input('Ingrese una opción: ')))
         cajero.limpiarPantalla()
         if opcion == 1:  # consultar
-            print(f'Su saldo es: {cajero.consultar()}')
+            print(f'Su saldo es: {cajero.consultar(numero)}')
 
         elif opcion == 2:
             cantidad = abs(int(input('ingrese la cantidad: ')))
-            cajero.consignar(cantidad)
-            print(f'Su nuevo saldo es: {cajero.consultar()}')
+            cajero.consignar(cantidad,numero)
+            print(f'Su nuevo saldo es: {cajero.consultar(numero)}')
 
         elif opcion == 3:
             cajero.divi()
@@ -51,12 +51,12 @@ if __name__ == '__main__':
             monto = abs(float(input('Ingrese la cantidad a depositar: ')))
             cantidad = cajero.conversion(tipo, monto)
             cajero.consignar(cantidad)
-            print(f'Su nuevo saldo es: {cajero.consultar()}')
+            print(f'Su nuevo saldo es: {cajero.consultar(numero)}')
 
         elif opcion == 4:
             cantidad = abs(float(input('Ingrese la cantidad a retirar: ')))
             print(cajero.retirar(cantidad))
-            print(f"Su nuevo saldo es: {cajero.consultar()}")
+            print(f"Su nuevo saldo es: {cajero.consultar(numero)}")
 
         elif opcion == 5:
             cajero.divi()
@@ -64,7 +64,7 @@ if __name__ == '__main__':
             monto = abs(float(input('Ingrese la cantidad a retirar: ')))
             cantidad = cajero.conversion(tipo, monto)
             cajero.retirar(cantidad)
-            print(f'Su nuevo saldo es: {cajero.consultar()}')
+            print(f'Su nuevo saldo es: {cajero.consultar(numero)}')
 
         else:
             print("fin del programa")

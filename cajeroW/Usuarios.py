@@ -18,32 +18,32 @@ class Usuario():
 
     def enviarUsuario(self, nombre):
         if nombre == 'ana':
-            return 'data_users/ana.txt'
+            return 0
         elif nombre == 'andrea':
-            return 'data_users/andrea.txt'
+            return 1
         elif nombre == 'benito':
-            return 'data_users/benito.txt'
+            return 2
         elif nombre == 'carlos':
-            return 'data_users/carlos.txt'
+            return 3
         elif nombre == 'daniel':
-            return 'data_users/daniel.txt'
+            return 4
         elif nombre == 'jaime':
-            return 'data_users/jaime.txt'
+            return 5
         elif nombre == 'jesus':
-            return 'data_users/jesus.txt'
+            return 6
         elif nombre == 'juan':
-            return 'data_users/juan.txt'
+            return 7
         elif nombre == 'lorena':
-            return 'data_users/lorena.txt'
+            return 8
         elif nombre == 'mercedes':
-            return 'data_users/mercedes.txt'
+            return 9
         elif nombre == 'pablo':
-            return 'data_users/pablo.txt'
+            return 10
         elif nombre == 'pedro':
-            return 'data_users/pedro.txt'
+            return 11
         elif nombre == 'sandra':
-            return 'data_users/sandra.txt'
+            return 12
         elif nombre == 'sebastian':
-            return 'data_users/sebastian.txt'
+            return 13
         else:
-            return 'data_users/william.txt'
+            return 14
