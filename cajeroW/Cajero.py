@@ -16,7 +16,6 @@ class Cajero(Divisas):
 
     def actualizar(self):
         with open(self.archivo, "w") as f:
-            # Escribe cada número de la lista en una línea separada
             for numero in self.numeros:
                 f.write(str(numero) + "\n")
         f.close()
@@ -36,7 +35,7 @@ class Cajero(Divisas):
         if self.numeros[numero] >= cantidad:
             self.numeros[numero] -= cantidad
             return 'operacion exitosa'
-        elif cantidad > self.__Limite:
+        if cantidad > self.__Limite:
             return print("accion denegada la cantidad máxima de retiro es $2,500,000 COP.")
         else:
             return "No hay suficiente saldo, no se completo la operacion."
