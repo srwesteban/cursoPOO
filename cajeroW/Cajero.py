@@ -24,7 +24,7 @@ class Cajero(Divisas):
         return print(self.numeros[numero])
 
     def limpiar_pantalla(self):
-        print('\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n')
+        print('\n' * 20)
 
     def consignar(self, cantidad, numero):
         self.numeros[numero] += cantidad
@@ -40,13 +40,6 @@ class Cajero(Divisas):
         else:
             return "No hay suficiente saldo, no se completo la operacion."
 
-    # consulta
-
     def menu(self):
-        print('')
-        print('1. Consultar saldo')
-        print('2. Consignacion')
-        print('3. Consignacion en otras divisas')
-        print('4. Retirar')
-        print('5. Retirar con otras divisas')
-        print('6. Salir')
+        print('\n'.join(['', '1. Consultar saldo', '2. Consignacion', '3. Consignacion en otras divisas', '4. Retirar', '5. Retirar con otras divisas', '6. Salir']))
+

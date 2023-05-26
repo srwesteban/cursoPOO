@@ -1,33 +1,10 @@
 class Divisas:
 
-    Dolar = 4650
-    Euro = 4980
-    Yen = 785
-    Libra = 5050
-
-    def __init__(self):
-        pass
+    Dolar, Euro, Yen, Libra = 4650, 4980, 785, 5050
 
     def conversion(self, tipo, monto):
-        if tipo == 1:
-            monto *= self.Dolar
-            return monto
-        elif tipo == 2:
-            monto *= self.Euro
-            return monto
-        elif tipo == 3:
-            monto *= self.Yen
-            return monto
-        elif tipo == 4:
-            monto *= self.Libra
-            return monto
-        else:
-            return monto
+        conversiones = {1: self.Dolar, 2: self.Euro, 3: self.Yen, 4: self.Libra}
+        return monto * conversiones.get(tipo, 1)
 
     def divi(self):
-        print('tipo de moneda')
-        print('1. Dolar')
-        print('2. Euro')
-        print('3. Yen')
-        print('4. Libra')
-        print('5. COP\n')
+        print('tipo de moneda\n1. Dolar\n2. Euro\n3. Yen\n4. Libra\n5. COP\n')

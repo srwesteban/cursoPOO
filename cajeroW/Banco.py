@@ -1,27 +1,12 @@
 class Banco:
-    Davivienda = "bd/Davivienda.txt"
-    Bancolombia = "bd/Bancolombia.txt"
-    Citybank = "bd/Citybank.txt"
-    BBVA = 'bd/BBVA.txt'
-    Colptaria = 'bd/Colpatria.txt'
+    Davivienda, Bancolombia, Citybank, BBVA, Colptaria = "bd/Davivienda.txt", "bd/Bancolombia.txt", "bd/Citybank.txt", "bd/BBVA.txt", "bd/Colpatria.txt"
 
     def seleccionar_banco(self):
+        opciones = {1: self.Davivienda, 2: self.BBVA, 3: self.Colptaria, 4: self.Citybank}
         opcion = abs(int(input('Ingrese una opción: ')))
-        if opcion == 1:
-            return self.Davivienda
-        elif opcion == 2:
-            return self.BBVA
-        elif opcion == 3:
-            return self.Colptaria
-        elif opcion == 4:
-            return self.Citybank
-        else:
-            return self.Bancolombia
+        return opciones.get(opcion, self.Bancolombia)
 
     def menu(self):
-        print('Seleccione su banco:\n')
-        print('1.Davivienda')
-        print('2.BBVA')
-        print('3.Colpatria')
-        print('4.Citybank')
-        print('5.Bancolombia\n')
+        print('Seleccione su banco:\n1.Davivienda\n2.BBVA\n3.Colpatria\n4.Citybank\n5.Bancolombia\n')
+
+

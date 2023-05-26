@@ -1,11 +1,8 @@
 import sys
-
-
 class Usuario:
 
     def __init__(self, cuenta, contrasena):
-        self.Cuenta = cuenta
-        self.Contrasena = contrasena
+        self.Cuenta, self.Contrasena = cuenta, contrasena
 
     def validar_banco(self, bd):
         try:
@@ -21,8 +18,6 @@ class Usuario:
     def validar_usuario(self, nombre):
         if nombre is None:
             sys.exit('Datos incorrectos fin del programa')
-        else:
-            pass
 
     def enviar_usuario(self, nombre):
         if nombre == 'ana':
