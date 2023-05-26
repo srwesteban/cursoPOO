@@ -1,5 +1,4 @@
 class Divisas:
-
     Dolar, Euro, Yen, Libra = 4650, 4980, 785, 5050
 
     def conversion(self, tipo, monto):
