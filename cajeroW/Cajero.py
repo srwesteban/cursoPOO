@@ -2,23 +2,15 @@ from Divisas import Divisas
 
 
 class Cajero(Divisas):
-    __Limite = 2500000  # variable privada
-    numeros = []
-
     def __init__(self):
         super().__init__()
         self.archivo = 'data_users/usuarios.txt'
         with open(self.archivo, "r") as f:
-            self.lineas = f.readlines()
-            for linea in self.lineas:
-                numero = float(linea)
-                self.numeros.append(numero)
+            self.numeros = [float(linea) for linea in f.readlines()]
 
     def actualizar(self):
         with open(self.archivo, "w") as f:
-            for numero in self.numeros:
-                f.write(str(numero) + "\n")
-        f.close()
+            f.write("\n".join(map(str, self.numeros)))
 
     def consultar(self, numero):
         return print(self.numeros[numero])
@@ -35,8 +27,8 @@ class Cajero(Divisas):
         if self.numeros[numero] >= cantidad:
             self.numeros[numero] -= cantidad
             return 'operacion exitosa'
-        if cantidad > self.__Limite:
-            return print("accion denegada la cantidad máxima de retiro es $2,500,000 COP.")
+        if cantidad > 2500000:
+            return "accion denegada la cantidad máxima de retiro es $2,500,000 COP."
         else:
             return "No hay suficiente saldo, no se completo la operacion."
 

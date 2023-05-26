@@ -3,7 +3,6 @@ from Cajero import Cajero
 from Usuarios import Usuario
 
 if __name__ == '__main__':
-
     banco = Banco()
     banco.menu()
     BD = banco.seleccionar_banco()
@@ -15,11 +14,8 @@ if __name__ == '__main__':
     cajero = Cajero()
     usuario.validar_usuario(nombre)
     cajero.limpiar_pantalla()
-
     print('Bienvenid@ ' + nombre + '\n')
-
     while True:
-
         cajero.menu()
         opcion = abs(int(input('Ingrese una opción: ')))
         cajero.limpiar_pantalla()
